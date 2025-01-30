@@ -1,15 +1,32 @@
 ﻿namespace SolutionTwo
 {
+    /// <summary>
+    /// API Class to calculate a missing number in a collection.
+    /// </summary>
     public class Numbers
     {
+        /// <summary>
+        /// A collection for saving the first 100 natural numbers.
+        /// </summary>
         public readonly List<int> numbers;
 
+        /// <summary>
+        /// Initialize the list and populates it with the first 100 natural numbers.
+        /// </summary>
         public Numbers()
         {
             numbers = Enumerable.Range(1, 100)
                 .ToList();
         }
 
+        /// <summary>
+        /// Extracts a single number from a collection.
+        /// The method can't be called twice.
+        /// </summary>
+        /// <param name="number">The number to extract from the collection.</param>
+        /// <returns>True if the number was succefully removed</returns>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public bool Extract(int number)
         {
             if (numbers.Count < 100)
@@ -25,6 +42,12 @@
             return isRemoved;
         }
 
+        /// <summary>
+        /// Calculates the missing number from the collection.
+        /// <see cref="Extract(int)"/> needs to be called first.
+        /// </summary>
+        /// <returns>The missing number.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public int Calculate()
         {
             if (numbers.Count is 100)
